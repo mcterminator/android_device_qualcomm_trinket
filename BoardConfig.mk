@@ -109,3 +109,19 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := true
+
+# -------------------------------
+# TWRP Configuration（修改后）
+# -------------------------------
+TW_THEME := portrait_xxhdpi              # 适配1872×1404的高密度屏幕
+TW_SCREEN_WIDTH := 1404                   # 竖屏宽（1404）
+TW_SCREEN_HEIGHT := 1872                  # 竖屏高（1872）
+TW_EXTRA_LANGUAGES := true                # 支持多语言
+TW_SCREEN_BLANK_ON_BOOT := true           #  boot时黑屏（避免闪烁）
+TW_INPUT_BLACKLIST := "hbtp_vm"           # 黑名单输入设备（如虚拟键盘）
+TW_USE_TOOLBOX := true                    # 使用toolbox替代busybox
+TW_INCLUDE_REPACKTOOLS := true            # 包含repack工具
+TW_INCLUDE_FUSE_EXFAT := true             # 支持exFAT格式
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab  # 分区表路径
+BOARD_USES_FASTBOOTD := true  #增加fastbootd支持
+# -------------------------------

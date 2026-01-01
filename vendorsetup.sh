@@ -4,7 +4,3 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-
-add_lunch_combo omni_trinket-user
-add_lunch_combo omni_trinket-userdebug
-add_lunch_combo omni_trinket-eng

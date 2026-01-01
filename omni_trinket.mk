@@ -27,3 +27,12 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="trinket-user 11 RKQ1.211119.001 jenkins202412182149 test-keys"
 
 BUILD_FINGERPRINT := qti/trinket/trinket:11/RKQ1.211119.001/jenkins202412182149:user/test-keys
+
+# 指定recovery.fstab路径（必须存在该文件）
+TARGET_RECOVERY_FSTAB := device/qualcomm/trinket/recovery.fstab
+
+# 设备无物理SD卡（必选）
+BOARD_HAS_NO_REAL_SDCARD := true
+
+# 支持Recovery滑动操作（TWRP必备）
+BOARD_RECOVERY_SWIPE := true
