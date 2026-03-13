@@ -6,6 +6,7 @@
 #
 
 LOCAL_PATH := device/qualcomm/trinket
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -25,3 +26,13 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+
+# A/B OTA 通用分区
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    vbmeta \
+    system \
+    system_ext \
+    product \
+    vendor

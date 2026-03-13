@@ -101,6 +101,14 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    system_ext \
+    system \
+    product \
+    vendor
+
 # TWRP Configuration
 TW_THEME := portrait_hdpi              # 适配1872×1404的高密度屏幕
 TW_SCREEN_WIDTH := 1404                   # 竖屏宽（1404）
@@ -111,16 +119,18 @@ TW_USE_TOOLBOX := true                    # 使用toolbox替代busybox
 TW_INCLUDE_REPACKTOOLS := true            # 包含repack工具
 TW_INCLUDE_FUSE_EXFAT := true             # 支持exFAT格式
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab  # 分区表路径
-# BOARD_USES_FASTBOOTD := true  # 暂时禁用fastbootd以修复reboot命令问题
 
-# AB_OTA_PARTITIONS := \
-#     boot \
-#     dtbo \
-#     vbmeta \
-#     system \
-#     system_ext \
-#     product \
-#     vendor
+# 启用fastbootd以支持reboot recovery和reboot fastboot命令
+BOARD_USES_FASTBOOTD := true
+
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    vbmeta \
+    system \
+    system_ext \
+    product \
+    vendor
 
 TARGET_NO_RECOVERY := false
 # TARGET_RECOVERY_QCOM_RECOVERY_PARTITION := /dev/block/bootdevice/by-name/recovery  # 注释掉可能导致问题的配置
@@ -140,6 +150,8 @@ TW_DEFAULT_BRIGHTNESS := 120
 TW_MAX_BRIGHTNESS := 255
 
 # 强制禁用AVB验证
+BOARD_AVB_ENABLE := true
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 0

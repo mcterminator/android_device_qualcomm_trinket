@@ -44,4 +44,10 @@ TW_HAS_DOWNLOAD_MODE := true
 
 # 指定init.rc文件
 PRODUCT_COPY_FILES += \
-    device/qualcomm/trinket/recovery/root/init.recovery.trinket.rc:root/init.recovery.trinket.rc:force
+    device/qualcomm/trinket/recovery/root/init.recovery.trinket.rc:root/init.recovery.trinket.rc:force \
+    device/qualcomm/trinket/recovery/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc:force
+
+# 确保fastbootd被包含
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.1-impl-mock \
+    fastbootd
